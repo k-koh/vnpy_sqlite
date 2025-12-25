@@ -47,6 +47,7 @@ class DbBarData(Model):
     high_price: FloatField = FloatField()
     low_price: FloatField = FloatField()
     close_price: FloatField = FloatField()
+    pre_close: FloatField = FloatField()
     eris_p_iv: FloatField = FloatField()
     eris_c_iv: FloatField = FloatField()
     eris_p_strike: IntegerField = IntegerField()
@@ -301,6 +302,7 @@ class SqliteDatabase(BaseDatabase):
                 high_price=db_bar.high_price,
                 low_price=db_bar.low_price,
                 close_price=db_bar.close_price,
+                pre_close=db_bar.pre_close,
                 eris_p_iv=db_bar.eris_p_iv,
                 eris_c_iv=db_bar.eris_c_iv,
                 eris_p_strike=db_bar.eris_p_strike,
