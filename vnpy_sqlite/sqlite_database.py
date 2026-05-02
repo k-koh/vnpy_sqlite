@@ -49,9 +49,17 @@ class DbBarData(Model):
     close_price: FloatField = FloatField()
     pre_close: FloatField = FloatField()
     eris_p_iv: FloatField = FloatField()
+    eris_p_delta: FloatField = FloatField(null=True)
     eris_c_iv: FloatField = FloatField()
+    eris_c_delta: FloatField = FloatField(null=True)
     eris_p_strike: IntegerField = IntegerField()
     eris_c_strike: IntegerField = IntegerField()
+    delta002_p_iv: FloatField = FloatField(null=True)
+    delta002_p_delta: FloatField = FloatField(null=True)
+    delta002_c_iv: FloatField = FloatField(null=True)
+    delta002_c_delta: FloatField = FloatField(null=True)
+    delta002_p_strike: IntegerField = IntegerField(null=True)
+    delta002_c_strike: IntegerField = IntegerField(null=True)
 
     class Meta:
         database: PeeweeSqliteDatabase = db
@@ -304,9 +312,17 @@ class SqliteDatabase(BaseDatabase):
                 close_price=db_bar.close_price,
                 pre_close=db_bar.pre_close,
                 eris_p_iv=db_bar.eris_p_iv,
+                eris_p_delta=db_bar.eris_p_delta or 0,
                 eris_c_iv=db_bar.eris_c_iv,
+                eris_c_delta=db_bar.eris_c_delta or 0,
                 eris_p_strike=db_bar.eris_p_strike,
                 eris_c_strike=db_bar.eris_c_strike,
+                delta002_p_iv=db_bar.delta002_p_iv or 0,
+                delta002_p_delta=db_bar.delta002_p_delta or 0,
+                delta002_c_iv=db_bar.delta002_c_iv or 0,
+                delta002_c_delta=db_bar.delta002_c_delta or 0,
+                delta002_p_strike=db_bar.delta002_p_strike or 0,
+                delta002_c_strike=db_bar.delta002_c_strike or 0,
                 gateway_name="DB"
             )
             bars.append(bar)
